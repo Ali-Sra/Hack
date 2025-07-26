@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتایج اسکن امنیتی</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #f4f4f4; }
+        h2 { color: #333; }
+        table { width: 90%; margin: auto; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background: #007BFF; color: white; }
+        pre { text-align: left; direction: ltr; background: #eee; padding: 10px; overflow: auto; max-height: 300px; }
+        a { display: block; margin: 10px auto; padding: 10px; text-decoration: none; color: white; background: #007BFF; width: 200px; border-radius: 5px; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        .section { margin: 20px 0; padding: 15px; border-radius: 8px; background: #f9f9f9; text-align: left; }
+        .section h3 { color: #007BFF; margin-bottom: 10px; }
+        .safe { color: green; font-weight: bold; }
+        .warning { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 نتایج اسکن امنیتی</h2>
+
+        {% if reports %}
+            <div class="section">
+                <h3>🔹 اطلاعات کلی</h3>
+                <p><strong>🌐 هدف اسکن:</strong> {{ reports[0][1] }}</p>
+                <p><strong>⏳ تاریخ اسکن:</strong> {{ reports[0][3] }}</p>
+            </div>
+
+            <div class="section">
+                <h3>🔍 CMS شناسایی شده</h3>
+                <p class="{% if 'Unknown' in reports[0][2] %}warning{% else %}safe{% endif %}">{{ reports[0][2] }}</p>
+            </div>
+
+            <div class="section">
+                <h3>🔒 گزارش SSL/TLS</h3>
+                <pre>{{ reports[0][4] }}</pre>
+            </div>
+
+            <div class="section">
+                <h3>🛡️ بررسی هدرهای امنیتی</h3>
+                <pre>{{ reports[0][5] }}</pre>
+            </div>
+
+            <div class="section">
+                <h3>⚠️ مسیرهای حساس یافت‌شده</h3>
+                <pre>{{ reports[0][6] }}</pre>
+            </div>
+
+            <div class="section">
+                <h3>🔐 تست Brute Force</h3>
+                <p class="{% if 'ایمن' in reports[0][7] %}safe{% else %}warning{% endif %}">{{ reports[0][7] }}</p>
+            </div>
+
+            <div class="section">
+                <h3>🛑 وضعیت فایروال</h3>
+                <p class="{% if 'تحت حفاظت' in reports[0][8] %}warning{% else %}safe{% endif %}">{{ reports[0][8] }}</p>
+            </div>
+        {% else %}
+            <p>⛔ هنوز هیچ اسکن امنیتی انجام نشده است.</p>
+        {% endif %}
+
+        <a href="/">🔙 بازگشت</a>
+        <a href="/download/pdf">📄 دانلود گزارش PDF</a>
+        <a href="/download/excel">📊 دانلود گزارش Excel</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>گزارش امنیتی</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>گزارش امنیتی</h1>
+    <table>
+        <tr>
+            <th>آدرس</th>
+            <th>گزارش</th>
+            <th>زمان</th>
+        </tr>
+        {% for scan in scans %}
+        <tr>
+            <td>{{ scan[0] }}</td>
+            <td>{{ scan[1] }}</td>
+            <td>{{ scan[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
