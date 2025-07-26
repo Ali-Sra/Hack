@@ -1,31 +1,32 @@
-# Python cache
+# Python bytecode cache
 __pycache__/
 *.py[cod]
 
-# Database
+# SQLite database files
 *.db
 
-# Environment
+# Logs and reports
+*.log
+*.csv
+*.xlsx
+*.pdf
+log.json
+report.html
+report.xlsx
+report.pdf
+waf_bypass_log.txt
+
+# Passwords or sensitive files
+passwords.txt
+
+# Python virtual environments
 venv/
 .env
 
-# Reports
-report.xlsx
-report.pdf
-report.html
-*.log
-*.csv
-
-# Sensitive files
-passwords.txt
-log.json
-
-# VSCode settings
+# VSCode and system files
 .vscode/
-
-# System files
 .DS_Store
 Thumbs.db
 
-# Custom folders
+# Custom user folders
 ali.ser94/
